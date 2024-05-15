@@ -23,7 +23,7 @@ public class UserTermAgreements extends BaseEntity{
     private Users user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "term_id")
     private Terms terms;
 
     @Column
