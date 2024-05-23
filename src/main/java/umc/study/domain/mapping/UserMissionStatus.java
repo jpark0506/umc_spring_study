@@ -27,6 +27,7 @@ public class UserMissionStatus extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Missions mission;
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'STARTED'")
     private MissionStatus status;
