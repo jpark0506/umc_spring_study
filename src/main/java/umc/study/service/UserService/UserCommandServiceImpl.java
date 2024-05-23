@@ -6,11 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.study.apiPayload.code.exception.handler.FoodCategoriesHandler;
 import umc.study.apiPayload.code.status.ErrorStatus;
 import umc.study.converter.UserConverter;
+import umc.study.converter.UserFoodPreferencesConverter;
 import umc.study.domain.FoodCategories;
 import umc.study.domain.Users;
 import umc.study.domain.mapping.UserFoodPreferences;
 import umc.study.repository.FoodCategoryRepository;
-import umc.study.repository.UserFoodPreferencesConverter;
+import umc.study.converter.UserFoodPreferencesConverter;
 import umc.study.repository.UserRepository;
 import umc.study.web.dto.UserRequestDTO.JoinDTO;
 
