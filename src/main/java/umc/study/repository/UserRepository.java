@@ -5,4 +5,5 @@ import umc.study.domain.Users;
 
 public interface UserRepository extends JpaRepository<Users,Long> {
 
+
 }
