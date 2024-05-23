@@ -9,7 +9,12 @@ import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.MissionStatus;
 
 import java.time.LocalDateTime;
-
+@Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class UserMissionStatus extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
