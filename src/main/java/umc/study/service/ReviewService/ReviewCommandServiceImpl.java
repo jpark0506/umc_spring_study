@@ -20,8 +20,8 @@ public class ReviewCommandServiceImpl implements ReviewCommandService{
     @Transactional
     public Reviews joinReview(ReviewRequestDTO.JoinDTO request) {
         Reviews review = ReviewConverter.toReview(request);
-
         //Logic이 딱히 필요가 없는거 같은데
         return reviewRepository.save(review);
     }
+
 }

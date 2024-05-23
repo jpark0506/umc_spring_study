@@ -6,16 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class UserResponseDTO {
+public class UserMissionStatusResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class JoinResultDTO{
-        Long userId;
+        Long missionStatusId;
         LocalDateTime createdAt;
     }
 }

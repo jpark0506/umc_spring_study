@@ -15,16 +15,12 @@ public class Stores extends BaseEntity{
     private Long id;
 
     @Column(nullable = false)
-    private String storeCategory;
-
-    @Column(nullable = false)
-    private String storeRegion;
-
-    @Column(nullable = false)
     private String storeName;
 
     @Column(nullable = false)
     private String storeAddress;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    private Regions region;
 }

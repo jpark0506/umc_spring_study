@@ -8,11 +8,9 @@ import java.util.List;
 public class StoreRequestDTO {
     @Getter
     public static class JoinDTO{
-        String name;
-        String nickname;
-        Integer gender;
-        String address;
-        @ExistCategories
-        List<Long> preferCategory;
+        private Long regionId;
+        private Long storeId;
+        private String storeName;
+        private String storeAddress;
     }
 }

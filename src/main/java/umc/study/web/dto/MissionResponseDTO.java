@@ -6,16 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class UserResponseDTO {
+public class MissionResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class JoinResultDTO{
-        Long userId;
+        Long missionId;
         LocalDateTime createdAt;
     }
+    //usermissionId를 넣어줄지 고려해보기
+
 }

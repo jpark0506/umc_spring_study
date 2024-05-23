@@ -16,7 +16,8 @@ import umc.study.web.dto.UserRequestDTO;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/reviews")
+@Valid
+@RequestMapping("/review")
 public class ReviewRestController {
 
     private final ReviewCommandService reviewCommandService;
