@@ -3,8 +3,12 @@ package umc.study.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.study.domain.common.BaseEntity;
+import umc.study.domain.mapping.UserMissionStatus;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,10 +28,16 @@ public class Missions extends BaseEntity {
     private String missionContent;
 
     @Column(nullable = false)
-    private LocalDate missionExpireDate;
+    private LocalDateTime missionExpireDate;
 
     @Column(nullable = false)
-    private LocalDate missionReward;
+    private Integer missionReward;
 
-    private String mission_store_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Stores store;
+
+    @OneToMany(mappedBy = "mission",cascade = CascadeType.ALL)
+    private List<UserMissionStatus> userMissionStatus = new ArrayList<>();
+
 }

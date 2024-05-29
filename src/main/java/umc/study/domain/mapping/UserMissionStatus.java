@@ -9,7 +9,12 @@ import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.MissionStatus;
 
 import java.time.LocalDateTime;
-
+@Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class UserMissionStatus extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +27,7 @@ public class UserMissionStatus extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Missions mission;
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'STARTED'")
     private MissionStatus status;

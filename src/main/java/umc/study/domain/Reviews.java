@@ -22,10 +22,6 @@ public class Reviews extends BaseEntity {
     @JoinColumn(name = "store_id")
     private Stores store;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mission_id")
-    private Missions mission;
-
     @Column(nullable = false)
     private Integer reviewScore;
 
