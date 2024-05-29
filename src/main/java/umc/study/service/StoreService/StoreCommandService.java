@@ -4,5 +4,5 @@ import umc.study.domain.Stores;
 import umc.study.web.dto.StoreRequestDTO;
 
 public interface StoreCommandService {
-    public Stores joinStore(StoreRequestDTO.JoinDTO request);
+    Stores joinStore(StoreRequestDTO.CreateStoreByRegionRequestDTO request);
 }

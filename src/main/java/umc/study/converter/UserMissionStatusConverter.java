@@ -2,6 +2,8 @@ package umc.study.converter;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import umc.study.domain.Missions;
 import umc.study.domain.Users;
 import umc.study.domain.enums.MissionStatus;
@@ -14,11 +16,13 @@ import umc.study.web.dto.UserMissionStatusResponseDTO;
 
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
+@Component
 public class UserMissionStatusConverter{
 
-    public static UserQueryServiceImpl userQueryServiceImpl;
-    public static MissionQueryServiceImpl missionQueryServiceImpl;
+    @Autowired
+    private UserQueryServiceImpl userQueryServiceImpl;
+    @Autowired
+    private MissionQueryServiceImpl missionQueryServiceImpl;
 
     public static UserMissionStatusResponseDTO.JoinResultDTO tojoinResultDTO(UserMissionStatus userMissionStatus){
         return UserMissionStatusResponseDTO.JoinResultDTO.builder()
@@ -26,17 +30,10 @@ public class UserMissionStatusConverter{
                 .createdAt(userMissionStatus.getCreatedAt())
                 .build();
     }
-    public static UserMissionStatus toUserMissionStatusConverter(UserMissionStatusRequestDTO.JoinDTO request){
+
+    public UserMissionStatus toUserMissionStatusConverter(UserMissionStatusRequestDTO.JoinDTO request){
         Users user = userQueryServiceImpl.findById(request.getUserId());
         Missions mission = missionQueryServiceImpl.findById(request.getMissionId());
-
-        //에러 코드 수정하기(Exception에 맞춰서)
-        if (user == null) {
-            throw new IllegalArgumentException("No User");
-        }
-        if(mission == null){
-            throw new IllegalArgumentException("No Mission");
-        }
 
         return UserMissionStatus.builder()
                 .mission(mission)

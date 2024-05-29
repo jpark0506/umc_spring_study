@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import umc.study.apiPayload.ApiResponse;
+import umc.study.converter.MissionConverter;
+import umc.study.domain.Missions;
 import umc.study.service.MissionService.MissionCommandService;
 import umc.study.web.dto.MissionRequestDTO;
 import umc.study.web.dto.MissionResponseDTO;
@@ -21,6 +23,13 @@ import umc.study.web.dto.UserMissionStatusResponseDTO;
 @RequestMapping("/mission")
 public class MissionRestController {
 
+    public final MissionCommandService missionCommandService;
+    public final MissionConverter missionConverter;
+    @PostMapping("/")
+    public ApiResponse<MissionResponseDTO.CreateMissionResponseDTO> create(@RequestBody @Valid MissionRequestDTO.CreateMissionRequestDTO request){
+        Missions mission = missionCommandService.createMission(request);
+        return ApiResponse.onSuccess(MissionConverter.toJoinResultDTO(mission));
+    }
 
 
 

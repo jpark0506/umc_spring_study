@@ -1,13 +1,10 @@
 package umc.study.web.dto;
 
 import lombok.Getter;
-import umc.study.validation.annotation.ExistCategories;
-
-import java.util.List;
 
 public class StoreRequestDTO {
     @Getter
-    public static class JoinDTO{
+    public static class CreateStoreByRegionRequestDTO {
         private Long regionId;
         private Long storeId;
         private String storeName;

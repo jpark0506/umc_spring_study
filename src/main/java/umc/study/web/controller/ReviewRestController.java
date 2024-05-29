@@ -12,7 +12,6 @@ import umc.study.domain.Reviews;
 import umc.study.service.ReviewService.ReviewCommandService;
 import umc.study.web.dto.ReviewRequestDTO;
 import umc.study.web.dto.ReviewResponseDTO;
-import umc.study.web.dto.UserRequestDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,8 +22,8 @@ public class ReviewRestController {
     private final ReviewCommandService reviewCommandService;
 
     @PostMapping("/")
-    public ApiResponse<ReviewResponseDTO .JoinResultDTO> join(@RequestBody @Valid ReviewRequestDTO.JoinDTO request){
-        Reviews review = reviewCommandService.joinReview(request);
+    public ApiResponse<ReviewResponseDTO.CreateReviewResponseDTO> join(@RequestBody @Valid ReviewRequestDTO.CreateReviewRequestDTO request){
+        Reviews review = reviewCommandService.createReview(request);
         return ApiResponse.onSuccess(ReviewConverter.tojoinResultDTO(review));
     }
 }

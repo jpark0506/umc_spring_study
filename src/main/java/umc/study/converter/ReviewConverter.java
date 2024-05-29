@@ -1,6 +1,7 @@
 package umc.study.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import umc.study.domain.Reviews;
 import umc.study.domain.Stores;
 import umc.study.domain.Users;
@@ -9,31 +10,26 @@ import umc.study.service.UserService.UserQueryServiceImpl;
 import umc.study.web.dto.ReviewRequestDTO;
 import umc.study.web.dto.ReviewResponseDTO;
 
+import java.time.LocalDateTime;
 
+@Component
 public class ReviewConverter {
 
+    @Autowired
+    private UserQueryServiceImpl userQueryService;
+    @Autowired
+    private StoreQueryServiceImpl storeQueryService;
 
-    private static UserQueryServiceImpl userQueryService;
-    private static StoreQueryServiceImpl storeQueryService;
-
-    public static ReviewResponseDTO.JoinResultDTO tojoinResultDTO(Reviews reviews){
-        return ReviewResponseDTO.JoinResultDTO.builder()
+    public static ReviewResponseDTO.CreateReviewResponseDTO tojoinResultDTO(Reviews reviews){
+        return ReviewResponseDTO.CreateReviewResponseDTO.builder()
                 .reviewId(reviews.getId())
-                .createdAt(reviews.getCreatedAt())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
-    public static Reviews toReview(ReviewRequestDTO.JoinDTO request){
+    public Reviews toReview(ReviewRequestDTO.CreateReviewRequestDTO request){
 
         Users user = userQueryService.findById(request.getUserId());
         Stores store = storeQueryService.findById(request.getStoreId());
-
-        //에러 코드 수정하기(Exception에 맞춰서)
-        if(user == null){
-            throw new IllegalArgumentException("Invalid Id");
-        }
-        if(store == null){
-            throw new IllegalArgumentException("Invalid Store");
-        }
 
         return Reviews.builder()
                 .reviewContent(request.getReview_content())
