@@ -19,6 +19,10 @@ public class Reviews extends BaseEntity {
     private Users user;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mission_id")
+    private Missions missions;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Stores store;
 
