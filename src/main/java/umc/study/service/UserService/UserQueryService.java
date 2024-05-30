@@ -1,6 +1,7 @@
 package umc.study.service.UserService;
 
 import org.springframework.data.domain.Page;
+import umc.study.domain.Missions;
 import umc.study.domain.Reviews;
 import umc.study.domain.Users;
 
@@ -12,4 +13,6 @@ public interface UserQueryService {
     Optional<Users> findUser(Long id);
 
     Page<Reviews> getReviewList(Long userId, Integer page);
+
+    Page<Missions> getMissionList(Long userId, Integer page, Integer status);
 }

@@ -7,7 +7,10 @@ import umc.study.domain.Missions;
 import umc.study.domain.Reviews;
 import umc.study.domain.Stores;
 
+import java.util.List;
+
 public interface MissionRepository extends JpaRepository<Missions,Long> {
 
     Page<Missions> findAllByStore(Stores store, PageRequest pageRequest);
+    Page<Missions> findAllByIdIn(List<Long> ids, PageRequest pageRequest);
 }

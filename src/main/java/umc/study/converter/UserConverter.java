@@ -2,6 +2,8 @@ package umc.study.converter;
 
 import org.apache.catalina.User;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
+import umc.study.domain.Missions;
 import umc.study.domain.Reviews;
 import umc.study.domain.Users;
 import umc.study.domain.enums.Gender;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class UserConverter
 {
     public static UserResponseDTO.JoinResultDTO toJoinResultDTO(Users user){
@@ -66,6 +69,28 @@ public class UserConverter
                 .totalElements(reviewList.getTotalElements())
                 .listSize(reviewPreViewDTOList.size())
                 .reviewList(reviewPreViewDTOList)
+                .build();
+    }
+
+    public static UserResponseDTO.MissionPreViewDTO missionPreViewDTO(Missions mission){
+        return UserResponseDTO.MissionPreViewDTO.builder()
+                .missionTitle(mission.getMissionTitle())
+                .missionContent(mission.getMissionContent())
+                .missionReward(mission.getMissionReward())
+                .build();
+    }
+
+    public static UserResponseDTO.MissionPreViewListDTO missionPreViewListDTO(Page<Missions> missionList){
+        List<UserResponseDTO.MissionPreViewDTO> missionPreViewDTOList = missionList.stream()
+                .map(UserConverter::missionPreViewDTO).collect(Collectors.toList());
+
+        return UserResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(missionList.isLast())
+                .isFirst(missionList.isFirst())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
                 .build();
     }
 

@@ -16,4 +16,5 @@ public class UserRequestDTO {
         @ExistCategories
         List<Long> preferCategory;
     }
+
 }

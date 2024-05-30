@@ -26,4 +26,10 @@ public class UserMissionStatusCommandServiceImpl implements UserMissionStatusCom
         UserMissionStatus userMissionStatus = userMissionStatusConverter.toUserMissionStatusConverter(request);
         return userMissionStatusRepository.save(userMissionStatus);
     }
+
+    @Override
+    public UserMissionStatus updateUserMissionStatus(UserMissionStatusRequestDTO.UpdateDTO request) {
+        UserMissionStatus userMissionStatus = userMissionStatusConverter.updateUserMissionStatusConverter(request);
+        return userMissionStatusRepository.save(userMissionStatus);
+    }
 }
