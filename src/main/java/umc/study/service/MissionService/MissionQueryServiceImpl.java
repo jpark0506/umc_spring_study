@@ -12,6 +12,7 @@ public class MissionQueryServiceImpl implements MissionQueryService {
     private MissionRepository missionRepository;
 
     public Missions findById(Long id){
+
         return missionRepository.findById(id).orElse(null);
     }
 
